@@ -1,0 +1,15 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /var/www/html/
+hooks:
+  BeforeInstall:
+    - location: scripts/remove_root_dir
+      timeout: 900
+      runas: root
+  ApplicationStart:
+    - location: scripts/start_app
+      timeout: 300
+      runas: root
+  ApplicationStop:
